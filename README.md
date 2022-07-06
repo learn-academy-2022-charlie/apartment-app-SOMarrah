@@ -127,9 +127,10 @@ switched everything to a functional component.
 The Devise User model is going to have an association with the Apartment model. In this situation, the User will have many apartments and the Apartments will belong to a User.
 
 ```bash
-rails generate resource Apartment street:string city:string state:string manager:string email:string price:string bedrooms:integer bathrooms:integer pets:string image:text user_id:integer
+rails generate resource Apartment street:string city:string state:string manager:string email:string price:string (type is protected switched to:) classification:text bedrooms:integer bathrooms:integer pets:string image:text user_id:integer
 rails db:migrate
 ```
+Added apartment type which a manager will be able to input (loft, studio, etc)
 
 ### User and Apartment Associations
 The Apartments will belong to a User and a User will have many apartments.
@@ -140,7 +141,7 @@ class Apartment < ApplicationRecord
   belongs_to :user
 end
 ```
-
+Added association
 **app/models/user.rb**
 ```ruby
 class User < ApplicationRecord
@@ -151,7 +152,7 @@ class User < ApplicationRecord
   has_many :apartments
 end
 ```
-
+added association
 ## 🚗 Testing
 To run the existing testing suite, run:
 
@@ -159,7 +160,61 @@ To run the existing testing suite, run:
 yarn jest
 rspec spec/
 ```
+Created Spec file:
+```ruby
+apartments = [
+    {
+        street:"1234 street",
+        city:"Chicago",
+        state:"Illinois",
+        manager:"Tester",
+        email:"tester@1234.com",
+        price:"950",
+        classification: "Studio",
+        bedrooms:0, 
+        bathrooms:1, 
+        pets:"All Allowed", 
+        image:"https://i0.wp.com/ppmapartments.com/wp-content/uploads/2018/10/Chicago-apartments-lakeview-studio-apartments-for-rent.jpg?fit=640%2C427&ssl=1", 
+        user_id:1
+    },
+    {
+        street:"91 Street",
+        city:"Chicago",
+        state:"Illinois",
+        manager:"Tester",
+        email:"tester@1234.com",
+        price:"800",
+        classification: "Studio",
+        bedrooms:0, 
+        bathrooms:1, 
+        pets:"None Allowed", 
+        image:"https://cdn.hswstatic.com/gif/studio-apt.jpg", 
+        user_id:1
+    },
+    {
+        street:"7834 South Hillside",
+        city:"Chicago",
+        state:"Illinois",
+        manager:"Tester",
+        email:"tester@1234.com",
+        price:"1200",
+        classification: "2-Bedroom",
+        bedrooms:2, 
+        bathrooms:1, 
+        pets:"Cats Only", 
+        image:"https://i.ytimg.com/vi/bHTyjG6ch98/maxresdefault.jpg", 
+        user_id:1
+    }
+]
 
+apartments.each do |value|
+    Apartment.create value
+end
+
+p Apartment.all
+```
+
+Imported a card for index and created all links in the Header
 ### Apartment Data Specs
 Part of your responsibility will be to build out robust tests both for models and for requests. 
 Tests you will need are:  

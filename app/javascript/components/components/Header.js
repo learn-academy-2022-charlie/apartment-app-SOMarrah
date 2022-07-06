@@ -30,8 +30,12 @@ export default function Header(props) {
               <a href={new_user_route} className="nav-link">Sign Up</a>
             </NavItem>
           }
+          <NavItem><a href="/apartmentindex">Index</a></NavItem>
+          <NavItem><a href="/apartmentshow">Show</a></NavItem>
+          <NavItem><a href="/apartmentnew">New</a></NavItem>
+          <NavItem><a href="/apartmentedit">Edit</a></NavItem>
+          
         </Nav>
       </>
     )
   }
-
