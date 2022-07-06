@@ -113,7 +113,15 @@ rails s
 
 See what is available already in the application.
 - What can a USER do? 
+the user can sign in/signup/signout and view specific pages (by typing in the navbar)
 - What views (pages, components) are available?
+index,show,create,edit,notfound, header, (footer i added)
+
+DID:
+yarn remove react-router-dom(old version)
+yarn add react-router-dom(6.3 - functional components)
+
+switched everything to a functional component.
 
 ## 🏡 Apartment Resource
 The Devise User model is going to have an association with the Apartment model. In this situation, the User will have many apartments and the Apartments will belong to a User.
