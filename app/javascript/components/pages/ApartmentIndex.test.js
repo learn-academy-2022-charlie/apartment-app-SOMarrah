@@ -14,9 +14,34 @@ import ApartmentIndex from './ApartmentIndex'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe("When ApartmentIndex renders", () => {
+  const props = {
+    apartments: [
+        {
+          street:"1234 street",
+          city:"Chicago",
+          state:"Illinois",
+          manager:"Tester",
+          email:"tester@1234.com",
+          price:"950",
+          classification: "Studio",
+          bedrooms:0, 
+          bathrooms:1, 
+          pets:"All Allowed", 
+          image:"https://i0.wp.com/ppmapartments.com/wp-content/uploads/2018/10/Chicago-apartments-lakeview-studio-apartments-for-rent.jpg?fit=640%2C427&ssl=1", 
+          user_id:1
+        }
+    ]
+  }
+  let apartmentIndexRenderer
+  beforeEach(() => {
+    apartmentIndexRenderer = shallow(<ApartmentIndex/>)
+  })
   it("displays a heading", () => {
-    const apartmentIndex = shallow(<ApartmentIndex />)
-    const apartmentIndexHeading = apartmentIndex.find("h3")
-    expect(apartmentIndexHeading.text()).toEqual("This Should Fail")
+    const apartmentIndexHeading = apartmentIndexRenderer.find("h3")
+    expect(apartmentIndexHeading.text()).toEqual("ApartmentIndex")
+  })
+  it("displays a card from per apartment", () =>{
+    const apartmentIndexCard = apartmentIndexRenderer.find("Card")
+    expect(apartmentIndexCard.length).toEqual(1)
   })
 })
