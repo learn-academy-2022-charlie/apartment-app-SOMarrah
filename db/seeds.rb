@@ -57,4 +57,4 @@ apartments_array.each do |apartment_obj|
     user.apartments.create apartment_obj
 end
 
-p Apartment.all
+p user.apartments
