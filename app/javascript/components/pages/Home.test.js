@@ -14,10 +14,35 @@ import Home from './Home'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe("When Home renders", () => {
+  // I will update this once I import data for images/styling later!
+  // const props = {
+  //   apartments: [
+  //       {
+  //         street:"1234 street",
+  //         city:"Chicago",
+  //         state:"Illinois",
+  //         manager:"Tester",
+  //         email:"tester@1234.com",
+  //         price:"950",
+  //         classification: "Studio",
+  //         bedrooms:0, 
+  //         bathrooms:1, 
+  //         pets:"All Allowed", 
+  //         image:"https://i0.wp.com/ppmapartments.com/wp-content/uploads/2018/10/Chicago-apartments-lakeview-studio-apartments-for-rent.jpg?fit=640%2C427&ssl=1", 
+  //         user_id:1
+  //       }
+  //   ]
+  // }
+  let apartmentHomeRenderer
+  beforeEach(() => {
+    apartmentHomeRenderer = shallow(<Home/>)
+  })
   it("displays a heading", () => {
-    const home = shallow(<Home />)
-    const homeHeading = home.find("h3")
-    console.log("HOME", homeHeading.debug());
-    expect(homeHeading.text()).toEqual("This Should Fail")
+    const apartmentHomeHeading = apartmentHomeRenderer.find("h3")
+    expect(apartmentHomeHeading.text()).toEqual("Welcome to Apartable")
+  })
+  it("displays descriptive text about the website", () =>{
+    const apartmentHomeText = apartmentHomeRenderer.find("p")
+    expect(apartmentHomeText.text()).toEqual("Look at listings. Get in contact. Make a move. Create new listings. Manage your listings. See the competition.")
   })
 })
