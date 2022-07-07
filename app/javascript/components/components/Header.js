@@ -36,17 +36,21 @@ export default function Header(props) {
             <Nav className="ml-auto" navbar>
                 {logged_in &&
                 <NavItem>
-                  <a href={sign_out_route} className="nav-link">Sign Out</a>
+                  <a href="/users/sign_out" className="nav-link">Sign Out</a>
                 </NavItem>
                 }
                 {!logged_in &&
                   <NavItem>
+<<<<<<< HEAD
                     <a href={"/users/sign-in"} className="nav-link">Sign In</a>
+=======
+                    <a href="/users/sign_in" className="nav-link">Sign In</a>
+>>>>>>> 95535d8 (finished navigation on all pages. was able to import react component header/footer inside of devise views.)
                   </NavItem>
                 }
                 {!logged_in &&
                   <NavItem>
-                    <a href={new_user_route} className="nav-link">Sign Up</a>
+                    <a href="/users/sign_up" className="nav-link">Sign Up</a>
                   </NavItem>
                 }
               <UncontrolledDropdown nav inNavbar>

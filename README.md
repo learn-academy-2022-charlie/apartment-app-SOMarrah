@@ -215,6 +215,19 @@ p Apartment.all
 ```
 
 Imported a card for index and created all links in the Header
+
+to import react components inside of ruby use:
+
+<%= react_component('componentname') %>
+if it has a path(/components or /assets etc):
+<%= react_component('<pathname>/componentname') %>
+can also import props which I might mess around with later:
+<%= react_component('componentname', {props}) %>
+can also do server side prerendering:
+<%= react_component('componentname', {props}) {prerender:true} %>
+documentation for further reading:
+https://github.com/reactjs/react-rails#getconstructor
+
 ### Apartment Data Specs
 Part of your responsibility will be to build out robust tests both for models and for requests. 
 Tests you will need are:  
