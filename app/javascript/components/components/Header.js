@@ -41,11 +41,7 @@ export default function Header(props) {
                 }
                 {!logged_in &&
                   <NavItem>
-<<<<<<< HEAD
-                    <a href={"/users/sign-in"} className="nav-link">Sign In</a>
-=======
                     <a href="/users/sign_in" className="nav-link">Sign In</a>
->>>>>>> 95535d8 (finished navigation on all pages. was able to import react component header/footer inside of devise views.)
                   </NavItem>
                 }
                 {!logged_in &&
