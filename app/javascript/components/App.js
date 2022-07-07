@@ -8,6 +8,7 @@ import ApartmentNew from './pages/ApartmentNew'
 import ApartmentEdit from './pages/ApartmentEdit'
 import NotFound from './pages/NotFound'
 import LogIn from './pages/LogIn'
+import ApartmentProtectedIndex from './pages/ApartmentProtectedIndex'
 
 import {
   BrowserRouter as Router,
@@ -19,7 +20,13 @@ import {
 export default function App(props) {
 
   let [apartments, setApartments] = useState([])
-
+  const {current_user, logged_in} = props
+  console.log("current user", current_user);
+  let myApartments = []
+  if(logged_in && apartments.length > 0){
+      myApartments = apartments.filter(apartment => apartment.user_id === current_user.id)
+  }
+  console.log("myapartments", myApartments);
   useEffect(() => {
     const readApartments = async () => {
       try{
@@ -32,13 +39,15 @@ export default function App(props) {
     };
     readApartments();
   },[])
- 
+
+
   return (
         <Router>
           <Header {...props} />
           <Routes>
             <Route exact path="/" element={<Home/>} />
             <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
+            <Route path="/mylistings" element={<ApartmentProtectedIndex {...props} apartments={myApartments}/>}/>
             <Route path="/apartmentshow" element={<ApartmentShow/>} />
             <Route path="/apartmentnew" element={<ApartmentNew/>} />
             <Route path="/apartmentedit" element={<ApartmentEdit/>} />
