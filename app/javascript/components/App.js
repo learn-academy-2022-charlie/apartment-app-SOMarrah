@@ -23,7 +23,7 @@ export default function App(props) {
   useEffect(() => {
     const readApartments = async () => {
       try{
-        fetch("/apartments")
+        await fetch("/apartments")
         .then(response => response.json())
         .then(payload => setApartments(payload))
       }catch (error) {
