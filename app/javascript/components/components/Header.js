@@ -60,10 +60,17 @@ export default function Header(props) {
                   <a href="/apartmentshow"><DropdownItem>
                   <NavItem>Show</NavItem>
                   </DropdownItem></a>
+                  {logged_in && 
+                  <>
                   <DropdownItem divider />
                   <a href="/apartmentnew"><DropdownItem>
                   <NavItem>New</NavItem>
                   </DropdownItem></a>
+                  <a href="/mylistings"><DropdownItem>
+                  <NavItem>MyListings</NavItem>
+                  </DropdownItem></a>
+                  </>
+                  }
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
