@@ -1,29 +1,26 @@
 import React from 'react'
-import {Card, CardBody, CardTitle, CardSubtitle,CardText, Button} from 'reactstrap'
+import { Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button } from 'reactstrap';
 
-export default function ApartmentIndex() {
+export default function ApartmentIndex(props) {
+  let {apartments} = props
+  console.log(apartments);
   return (
     <>
     <h3>ApartmentIndex</h3>
-    <Card>
-      <CardBody>
-        <CardTitle tag="h5">
-          Card title
-        </CardTitle>
-        <CardSubtitle
-          className="mb-2 text-muted"
-          tag="h6"
-        >
-          Card subtitle
-        </CardSubtitle>
-        <CardText>
-          Some quick example text to build on the card title and make up the bulk of the card's content.
-        </CardText>
-        <Button>
-          Button
-        </Button>
-      </CardBody>
-  </Card>
+    <div>
+      {apartments && apartments.map((value, index)=> {
+        return (
+          <Card key={index}>
+            <CardBody>
+              <CardTitle>{value.street}, {value.city},{value.state}</CardTitle>
+              <CardSubtitle>{value.classification}</CardSubtitle>
+              <CardText>Price: {value.price}</CardText>
+              <Button>More Information</Button>
+            </CardBody>
+          </Card>
+        )})}
+    </div>
   </>
   )
 }

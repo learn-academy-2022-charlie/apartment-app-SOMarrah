@@ -17,6 +17,7 @@ describe("When ApartmentIndex renders", () => {
   const props = {
     apartments: [
         {
+          id: 1,
           street:"1234 street",
           city:"Chicago",
           state:"Illinois",
@@ -34,7 +35,7 @@ describe("When ApartmentIndex renders", () => {
   }
   let apartmentIndexRenderer
   beforeEach(() => {
-    apartmentIndexRenderer = shallow(<ApartmentIndex/>)
+    apartmentIndexRenderer = shallow(<ApartmentIndex {...props}/>)
   })
   it("displays a heading", () => {
     const apartmentIndexHeading = apartmentIndexRenderer.find("h3")

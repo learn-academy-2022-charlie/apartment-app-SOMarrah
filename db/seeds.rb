@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-apartments = [
+user = User.where(email: 'test@example.com').first_or_create(password: '12345678', password_confirmation: '12345678')
+
+apartments_array = [
     {
         street:"1234 street",
         city:"Chicago",
@@ -34,7 +36,7 @@ apartments = [
         pets:"None Allowed", 
         image:"https://cdn.hswstatic.com/gif/studio-apt.jpg", 
         user_id:1
-    },
+    }, 
     {
         street:"7834 South Hillside",
         city:"Chicago",
@@ -51,8 +53,8 @@ apartments = [
     }
 ]
 
-apartments.each do |value|
-    Apartment.create value
+apartments_array.each do |apartment_obj|
+    user.apartments.create apartment_obj
 end
 
-p Apartment.all
+p user.apartments
