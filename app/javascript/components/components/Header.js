@@ -41,7 +41,7 @@ export default function Header(props) {
                 }
                 {!logged_in &&
                   <NavItem>
-                    <a href={sign_in_route} className="nav-link">Sign In</a>
+                    <a href={"/users/sign-in"} className="nav-link">Sign In</a>
                   </NavItem>
                 }
                 {!logged_in &&
