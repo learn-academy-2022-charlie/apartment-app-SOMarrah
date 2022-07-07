@@ -7,6 +7,8 @@ import ApartmentShow from './pages/ApartmentShow'
 import ApartmentNew from './pages/ApartmentNew'
 import ApartmentEdit from './pages/ApartmentEdit'
 import NotFound from './pages/NotFound'
+import LogIn from './pages/LogIn'
+
 import {
   BrowserRouter as Router,
   Route,
@@ -40,9 +42,11 @@ export default function App(props) {
             <Route path="/apartmentshow" element={<ApartmentShow/>} />
             <Route path="/apartmentnew" element={<ApartmentNew/>} />
             <Route path="/apartmentedit" element={<ApartmentEdit/>} />
+            <Route path="/users/sign-in" element={<LogIn {...props}/>} />
             <Route path="*" element={<NotFound/>}/>
           </Routes>
           <Footer/>
         </Router>
     )
   }
+
