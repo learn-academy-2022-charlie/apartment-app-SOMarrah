@@ -1,5 +1,17 @@
-import React from 'react'
-import { Nav, NavItem } from 'reactstrap'
+import React, {useState, useEffect} from 'react'
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
+
 
 export default function Header(props) {
   const {
@@ -11,31 +23,53 @@ export default function Header(props) {
   } = props
   console.log("logged_in:", logged_in)
   console.log("current_user:", current_user)
+
+  const [toggle, setToggle] = useState(false)
+
     return (
       <>
-        <h1>This is the Header</h1>
-        <Nav>
-          {logged_in &&
-            <NavItem>
-              <a href={sign_out_route} className="nav-link">Sign Out</a>
-            </NavItem>
-          }
-          {!logged_in &&
-            <NavItem>
-              <a href={sign_in_route} className="nav-link">Sign In</a>
-            </NavItem>
-          }
-          {!logged_in &&
-            <NavItem>
-              <a href={new_user_route} className="nav-link">Sign Up</a>
-            </NavItem>
-          }
-          <NavItem><a href="/apartmentindex">Index</a></NavItem>
-          <NavItem><a href="/apartmentshow">Show</a></NavItem>
-          <NavItem><a href="/apartmentnew">New</a></NavItem>
-          <NavItem><a href="/apartmentedit">Edit</a></NavItem>
-          
-        </Nav>
+      <div>
+        <Navbar color="light" light expand="md">
+          <NavbarBrand href="/">Apartable</NavbarBrand>
+          <NavbarToggler onClick={() => setToggle(!toggle)} />
+          <Collapse isOpen={toggle} navbar>
+            <Nav className="ml-auto" navbar>
+                {logged_in &&
+                <NavItem>
+                  <a href={sign_out_route} className="nav-link">Sign Out</a>
+                </NavItem>
+                }
+                {!logged_in &&
+                  <NavItem>
+                    <a href={sign_in_route} className="nav-link">Sign In</a>
+                  </NavItem>
+                }
+                {!logged_in &&
+                  <NavItem>
+                    <a href={new_user_route} className="nav-link">Sign Up</a>
+                  </NavItem>
+                }
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Explore
+                </DropdownToggle>
+                <DropdownMenu end>
+                  <a href="/apartmentindex"><DropdownItem>
+                  <NavItem>Index</NavItem>
+                  </DropdownItem></a>
+                  <a href="/apartmentshow"><DropdownItem>
+                  <NavItem>Show</NavItem>
+                  </DropdownItem></a>
+                  <DropdownItem divider />
+                  <a href="/apartmentnew"><DropdownItem>
+                  <NavItem>New</NavItem>
+                  </DropdownItem></a>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
       </>
     )
   }
