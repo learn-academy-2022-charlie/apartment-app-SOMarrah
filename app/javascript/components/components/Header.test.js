@@ -14,9 +14,13 @@ import Header from './Header'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe("When Header renders", () => {
-  it("displays a heading", () => {
-    const header = shallow(<Header />)
-    const headerHeading = header.find("h1")
-    expect(headerHeading.text()).toEqual("This should fail")
+
+  let apartmentHeaderRenderer
+  beforeEach(() => {
+    apartmentHeaderRenderer = shallow(<Header/>)
+  })
+  it("displays a nav bar", () => {
+    const apartmentHeader = apartmentHeaderRenderer.find("Navbar")
+    expect(apartmentHeader.length).toEqual(1)
   })
 })

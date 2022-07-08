@@ -14,3 +14,57 @@
  *= require_self
  */
 @import 'bootstrap';
+
+#footer{
+    color: black;
+    text-decoration: none;
+}
+#footerContainer{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 3em;
+    background-color: #F8F9FA;
+    left: 0;
+    bottom: 0;
+}
+.deviseFormContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+.new_user{
+    font-family: 'Open Sans Condensed', arial, sans;
+	width: 500px;
+	padding: 30px;
+	background: #FFFFFF;
+	margin: 50px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+}
+.formTitle{
+    background: #4D4D4D;
+	text-transform: uppercase;
+	font-family: 'Open Sans Condensed', sans-serif;
+	color: #f6f6f6;
+	font-size: 18px;
+	font-weight: 100;
+	padding: 20px;
+	margin: -30px -30px 30px -30px;
+    text-align: center;
+}
+label{
+    display: none;
+}
+label[for="user_remember_me"]{
+    display: block;
+}
+.field{
+    display: flex;
+    justify-content: center;
+}
+input{
+justify-self: center;
+}
