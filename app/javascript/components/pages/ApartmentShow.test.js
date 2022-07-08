@@ -13,10 +13,32 @@ import ApartmentShow from './ApartmentShow'
 //Allows us to utilize the adapter we import in earlier, allowing us to call and render a component.
 Enzyme.configure({ adapter: new Adapter() })
 
-describe("When ApartmentShow renders", () => {
+describe("When ApartmentNew renders", () => {
+  const props = {
+    apartments: [
+      {
+        id: 1,
+        street: "12345 street",
+        city: "Chicago",
+        state: "Illinois",
+        manager: "Joe Shmoe",
+        email: "shmoe@gmail.com", 
+        classification: "blabla",
+        price: "1000", 
+        bedrooms: 2, 
+        bathrooms: 3, 
+        pets: "no pets",
+        image: "https://doesnotexist.com"
+      }
+    ]
+  }
+  let apartmentShowRender
+  beforeEach(() => {
+      apartmentShowRender = shallow(<ApartmentShow {...props} />)
+  })
+ 
   it("displays a heading", () => {
-    const apartmentShow = shallow(<ApartmentShow />)
-    const apartmentShowHeading = apartmentShow.find("h3")
-    expect(apartmentShowHeading.text()).toEqual("This Should Fail")
+    const apartmentShowHeading = apartmentShowRender.find("h3")
+    expect(apartmentShowHeading.text()).toEqual("ApartmentShow")
   })
 })

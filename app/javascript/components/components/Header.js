@@ -57,9 +57,6 @@ export default function Header(props) {
                   <a href="/apartmentindex"><DropdownItem>
                   <NavItem>Index</NavItem>
                   </DropdownItem></a>
-                  <a href="/apartmentshow"><DropdownItem>
-                  <NavItem>Show</NavItem>
-                  </DropdownItem></a>
                   {logged_in && 
                   <>
                   <DropdownItem divider />
