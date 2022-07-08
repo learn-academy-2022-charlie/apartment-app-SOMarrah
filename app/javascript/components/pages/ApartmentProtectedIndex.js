@@ -3,17 +3,20 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 export default function ApartmentProtectedIndex(props) {
+const {logged_in,
+  current_user,
+  new_user_route,
+  sign_in_route,
+  sign_out_route} = props
+
   let{apartments} = props
   console.log("apartments", apartments)
-  
-  // if(apartments.length > 0){
-  //   console.log("apartment id test:", apartments[0].user_id)}
 
   return (
     <>
     <h3>My listings</h3>
     <div>
-      {apartments && apartments.map((value, index)=> {
+      { apartments && apartments.filter(apartment => apartment.user_id === current_user.id).map((value, index)=> {
         
         return (
           
