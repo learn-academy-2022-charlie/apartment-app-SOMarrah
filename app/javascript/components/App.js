@@ -54,7 +54,7 @@ function createApartment(apartmentProps){
             <Route exact path="/" element={<Home/>} />
             <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments}/>} />
             <Route path="/mylistings" element={<ApartmentProtectedIndex {...props} apartments={apartments}/>}/>
-            <Route path="/apartmentshow" element={<ApartmentShow/>} />
+            <Route path="/apartmentshow/:id" element={<ApartmentShow apartments={apartments}/>} />
             <Route path="/apartmentnew" element={<ApartmentNew {...props} readApartments={readApartments} createApartment={createApartment}/>} />
             <Route path="/apartmentedit" element={<ApartmentEdit/>} />
             <Route path="/users/sign-in" element={<LogIn {...props}/>} />
